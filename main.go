@@ -117,6 +117,5 @@ func (q *Queue) Display() {
 
 func (c *Cache) Flush() {
 	fmt.Println("Flushing cache")
-	c.Queue = NewQueue()
-	c.Hash = Hash{}
+	*c = NewCache()
 }
