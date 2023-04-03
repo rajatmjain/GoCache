@@ -43,13 +43,23 @@ cache.Display()
 
 ```
 
-The code creates a new cache instance using the NewCache() function. It then populates the cache with an initial sample of items and tests the cache with a test sample of items.
+The code creates a new cache instance using the `NewCache()` function. It then populates the cache with an initial sample of items and tests the cache with a test sample of items.
 
-The Check() method is used to add an item to the cache or retrieve an existing item from the cache. If the item is already in the cache, it is moved to the front of the cache (i.e., the most recently used position). If the cache is full, the least recently used item is removed from the cache.
+The `Check()` method is used to add an item to the cache or retrieve an existing item from the cache. If the item is already in the cache, it is moved to the front of the cache (i.e., the most recently used position). If the cache is full, the least recently used item is removed from the cache.
 
 The `Display()` method is used to display the current state of the cache.
 
 The `Flush()` method is used to clear the cache.
+
+The `Len()` method returns the number of items in the cache.
+
+The `Contains()` method checks if an item is in the cache.
+
+The `Items()` method returns a copy of the hash map used by the cache.
+
+The `Get()` method retrieves an item from the cache by its key. If the item is found, it is moved to the front of the cache and its value is returned. If the item is not found, an error is returned.
+
+The `SetCacheSize()` method is used to set the maximum size of the cache. If the new size is smaller than the current size, the least recently used items are removed from the back of the queue until the queue is the new size. If the new size is larger than the current size, the cache size is updated but the queue is not modified.
 
 ## Implementation Details
 

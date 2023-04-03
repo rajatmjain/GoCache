@@ -22,6 +22,7 @@ func main() {
 		cache.Display()
 	}
 
+	fmt.Println()
 	cache.SetCacheSize(2)
 	cache.Display()
 
@@ -152,6 +153,8 @@ func (c *Cache) Get(key string) (string, error) {
 }
 
 func (c *Cache) SetCacheSize(size int) {
+	fmt.Printf("resizing to: %v", size)
+	fmt.Println()
 	if size < 1 {
 		return
 	}
