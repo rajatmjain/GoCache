@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-const sizeOfCache = 5
+var sizeOfCache = 5
 
 func main() {
 	fmt.Println("Start cache")
@@ -21,6 +21,9 @@ func main() {
 		cache.Check(word)
 		cache.Display()
 	}
+
+	cache.SetCacheSize(2)
+	cache.Display()
 
 	fmt.Println()
 	cache.Flush()
@@ -118,4 +121,44 @@ func (q *Queue) Display() {
 func (c *Cache) Flush() {
 	fmt.Println("Flushing cache")
 	*c = NewCache()
+}
+
+func (c *Cache) Len() int {
+	return c.Queue.Length
+}
+
+func (c *Cache) Contains(value string) bool {
+	node := c.Queue.Head.Right
+	for i := 0; i < c.Queue.Length; i++ {
+		if node.Value == value {
+			return true
+		}
+		node = node.Right
+	}
+	return false
+}
+
+func (c *Cache) Items() Hash {
+	return c.Hash
+}
+
+func (c *Cache) Get(key string) (string, error) {
+	if node, ok := c.Hash[key]; ok {
+		c.Remove(node)
+		c.Add(node)
+		return node.Value, nil
+	}
+	return "", fmt.Errorf("key %s not found in cache", key)
+}
+
+func (c *Cache) SetCacheSize(size int) {
+	if size < 1 {
+		return
+	}
+	if size < c.Queue.Length {
+		for i := 0; i <= c.Queue.Length-size+1; i++ {
+			c.Remove(c.Queue.Tail.Left)
+		}
+	}
+	sizeOfCache = size
 }

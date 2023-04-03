@@ -47,9 +47,9 @@ The code creates a new cache instance using the NewCache() function. It then pop
 
 The Check() method is used to add an item to the cache or retrieve an existing item from the cache. If the item is already in the cache, it is moved to the front of the cache (i.e., the most recently used position). If the cache is full, the least recently used item is removed from the cache.
 
-The Display() method is used to display the current state of the cache.
+The `Display()` method is used to display the current state of the cache.
 
-The Flush() method is used to clear the cache.
+The `Flush()` method is used to clear the cache.
 
 ## Implementation Details
 
