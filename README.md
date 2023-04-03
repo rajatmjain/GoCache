@@ -8,7 +8,7 @@ To get started, you'll need to have Go installed on your machine. Once you have 
 
 ```
 $ git clone https://github.com/rajatmjain/GoCache.git
-$ cd lru-cache-go
+$ cd GoCache
 ```
 
 You can then run the code using the following command:
